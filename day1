@@ -1,0 +1,14 @@
+RAL= Resource Abstraction Layer
+
+in ansible orange color means change in state or implemented	
+
+
+Idempotent= An HTTP method is idempotent if the intended effect on the server of making 
+a single request is the same as the effect of making several identical requests.
+
+yum install ansible-core
+
+dpkg --list dialog
+dpkg --list ansible
+apt-get install ansible
+ansible localhost -m package -a "name=dialog state=present"
