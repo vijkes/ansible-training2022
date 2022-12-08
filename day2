@@ -3,3 +3,10 @@ ansible all -m copy -a "src=/root/webpage/vk.html dest=/var/www/html"
 ansible all -m service -a "name=httpd status=started"
 
 
+
+---
+- hosts: all
+  tasks:
+   - package: "name=httpd state=present"
+   - copy: "src=/root/webpage/vk2.html dest=/var/www/html"
+   - service: "name=httpd state=started"
