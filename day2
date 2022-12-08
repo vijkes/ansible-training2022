@@ -1,0 +1,5 @@
+ansible all -m package -a "name=httpd state=present"
+ansible all -m copy -a "src=/root/webpage/vk.html dest=/var/www/html"
+ansible all -m service -a "name=httpd status=started"
+
+
