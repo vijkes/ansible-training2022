@@ -1,0 +1,7 @@
+- hosts: 18.117.165.59
+  vars:
+  - n: vk...
+  tasks:
+  - template:
+       src: /code/test.yaml
+       dest: /root/test2.yaml
