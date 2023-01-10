@@ -1,0 +1,17 @@
+- hosts: 3.141.47.124
+  tasks:
+    - name: install haproxy
+      package:
+         name: haproxy
+         state: present
+
+    - name: copy haproxy config files
+      template:
+        src: lb.cfg.j2
+        dest: /etc/haproxy/haproxy.cfg
+
+    - name: start haproxy service
+      service:
+        name: haproxy
+        state: reloaded
+        enabled: yes
