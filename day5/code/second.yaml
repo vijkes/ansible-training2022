@@ -1,0 +1,16 @@
+- hosts: 172.31.7.202
+  vars:
+    - login:
+       - Employee One
+       - user3
+       - user4
+       - user5
+    - date: ansible_date_time.date
+    - bond: 2 yrs
+    - sick: 1/month
+    - el: 1.5/month
+    - cl: 4/annum
+  tasks:
+    - template:
+        src: /code/form.j2
+        dest: /root/submit.txt
