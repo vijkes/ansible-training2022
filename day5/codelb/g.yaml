@@ -1,0 +1,4 @@
+- hosts: 3.141.47.124
+  tasks:
+    - debug:
+        var: groups['web']
