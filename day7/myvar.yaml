@@ -1,0 +1,7 @@
+myport: 85
+oslist:
+ - "RedHat"
+#      - "Ubuntu"
+#- "Debian"
+ - "Centos"
+ - "Fedora"
