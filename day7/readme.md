@@ -1,7 +1,7 @@
 facts and history
 
 <html>
-<h3>
+<h7>
 handlers:
 tasks under this tag will run only when they are called by notify
 using name tag.
@@ -16,5 +16,5 @@ ansible-playbook setup.yaml
 ansible-galaxy role -l
 ansible-galaxy role init <roleName>
 defaults  files  handlers  meta  README.md  tasks  templates  tests  vars
-</h3>
+</h7>
 </html>
