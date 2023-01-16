@@ -1,0 +1,46 @@
+- hosts: all
+  vars_files:
+    - myportfile.txt
+  tasks:
+    - name: install package
+      package:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - "httpd"
+        - "php"
+        - "dialog"
+      notify: s/w install debug
+      when: ansible_facts['distribution'] in oslist
+
+
+    - name: setup config file
+      template:
+        src: "my.conf.j2"
+        dest: "/etc/httpd/conf.d/my.conf"
+      notify: "Start httpd service"
+
+    - name: deploy web page local
+      copy:
+        src: "index.php"
+        dest: "/var/www/html/index.php"
+
+    - name: Git checkout from repo
+      git:
+        repo: "https://github.com/vijkes/ansible-training2022.git"
+        dest: "/var/www/html/newrepo"
+      ignore_errors: true
+
+        #    - name: run shell
+        #      script: /code/se.sh
+
+  handlers:
+    - name: Start httpd service
+      service:
+        name: "httpd"
+        state: reloaded
+        enabled: yes
+
+    - name: s/w install debug
+      debug:
+        msg: "i m debug msg..."
