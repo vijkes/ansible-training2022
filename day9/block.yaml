@@ -1,0 +1,26 @@
+- hosts: web
+  vars:
+    - pkg: httpd2
+  tasks:
+    - name: this is block for exception handling
+      block:
+      - package:
+           name: "{{ pkg }}"
+           state: latest
+
+      - service:
+           name: httpd
+           state: restarted
+           enabled: true
+
+      - copy:
+         content: this is test file2
+         dest: /var/www/html/index.html
+
+      rescue:
+        - debug:
+            msg: "some errors were caught"
+
+      always:
+        - debug:
+            msg: "i am khama-kha and I always run"
