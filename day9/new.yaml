@@ -1,0 +1,28 @@
+---
+ - hosts: web
+   vars_files:
+     - myvar.yaml
+   tasks:
+     - command: date
+     - package:
+        name: "{{ pkg }}"
+        state: latest
+       register: y
+         # failed_when: true
+       ignore_errors: true
+       ignore_unreachable: false
+
+     - copy:
+        src: ./myvar.yaml
+        dest: /tmp/newvar.yaml
+
+     - service:
+        name: "{{ pkg }}"
+        state: started
+        enabled: yes
+     - debug:
+         var: y
+
+     - debug:
+         msg: "your {{ pkg }} installed successfully"
+       when: not y.failed
